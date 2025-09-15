@@ -1,0 +1,9 @@
+# Ignorar dependencias y archivos de construcción
+node_modules
+dist
+.vite
+
+# Ignorar archivos de configuración específicos
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
