@@ -1,56 +1,53 @@
-# Nombre del Workflow para la pestaña "Actions" en GitHub
-name: Deploy Vite App to GitHub Pages
+# Nombre del workflow
+name: Build and Deploy to GitHub Pages
 
-# Define cuándo se ejecutará este workflow
 on:
-  # Se ejecuta cada vez que haces un 'push' a la rama 'main'
+  # Se ejecuta en pushes a la rama main
   push:
-    branches: ['main']
-  # Te permite ejecutarlo manualmente desde la pestaña "Actions"
+    branches: ["main"]
+
+  # Permite ejecutarlo manualmente desde la pestaña Actions
   workflow_dispatch:
 
-# Configura los permisos que necesitará el workflow
+# AÑADE ESTA SECCIÓN DE PERMISOS
 permissions:
   contents: read
-  pages: write
-  id-token: write
+  pages: write      # Permiso para escribir en GitHub Pages
+  id-token: write   # Permiso para autenticarse
 
-# Define los trabajos (jobs) que se ejecutarán
 jobs:
+  # Job de despliegue
   deploy:
     runs-on: ubuntu-latest
+    
+    # AÑADE ESTA SECCIÓN DE ENTORNO
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
     steps:
-      # 1. Descarga el código del repositorio
       - name: Checkout repository
-        uses: actions/checkout@v4 # Versión actualizada
+        uses: actions/checkout@v4
 
-      # 2. Configura el entorno de Node.js
-      - name: Setup Node.js
-        uses: actions/setup-node@v4 # Versión actualizada
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: '20' # Usando la versión de Node correcta
 
-      # 3. Instala las dependencias
       - name: Install dependencies
         run: npm ci
 
-      # 4. Construye la aplicación
       - name: Build project
         run: npm run build
 
-      # 5. Prepara los archivos para ser subidos a GitHub Pages
       - name: Setup Pages
-        uses: actions/configure-pages@v5 # Versión actualizada
+        uses: actions/configure-pages@v4
 
-      # 6. Sube los archivos de la carpeta 'dist' como un artefacto de despliegue
-      # ESTA ES LA ACCIÓN MODERNA Y CORRECTA PARA GITHUB PAGES
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3 # Versión actualizada
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: './dist' # Asegúrate de que esta es tu carpeta de build
 
-      # 7. Despliega el artefacto a la URL de GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4 # Versión actualizada
+        uses: actions/deploy-pages@v4
