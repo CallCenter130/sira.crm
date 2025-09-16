@@ -3,7 +3,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Layout from '../components/Layout';
 import DashboardPage from '../pages/DashboardPage';
-import NewCasePage from '../pages/NewCasePage';
+//import NewCasePage from '../pages/NewCasePage';
 
 function App() {
   return (
@@ -11,9 +11,9 @@ function App() {
       {/* Todas las rutas anidadas dentro de Layout compartirán su estructura visual */}
       <Route path="/" element={<Layout />}>
         {/* La ruta "index" es la que se muestra por defecto en "/" */}
-        <Route index element={<DashboardPage />} />
+        {/*<Route index element={<DashboardPage />} />
         <Route path="formulario" element={<NewCasePage />} />
-        {/* Puedes añadir la página de búsqueda aquí cuando la crees */}
+         Puedes añadir la página de búsqueda aquí cuando la crees */}
         {/* <Route path="buscar" element={<SearchPage />} /> */}
 
         {/* Ruta para manejar páginas no encontradas */}
