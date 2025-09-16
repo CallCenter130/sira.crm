@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*{
   "compilerOptions": {
     "composite": true,
@@ -37,14 +38,27 @@
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
+=======
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+>>>>>>> 17b182c (Initial commit: Vite + React + TS project setup)
     "module": "ESNext",
     "skipLibCheck": true,
 
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
+<<<<<<< HEAD
     "resolveJsonModule": true,
     "isolatedModules": true,
+=======
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+>>>>>>> 17b182c (Initial commit: Vite + React + TS project setup)
     "noEmit": true,
     "jsx": "react-jsx",
 
@@ -52,9 +66,18 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+<<<<<<< HEAD
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src"]
   // --- LÍNEA ELIMINADA ---
   // "references": [{ "path": "./tsconfig.node.json" }] 
 }
+=======
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
+  },
+  "include": ["src"]
+}
+>>>>>>> 17b182c (Initial commit: Vite + React + TS project setup)

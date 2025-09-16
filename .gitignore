@@ -22,9 +22,12 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+<<<<<<< HEAD
 
 # ===============================================
 # Reglas para Google Apps Script (clasp)
 # ===============================================
 .clasp.json
 .claspignore
+=======
+>>>>>>> 17b182c (Initial commit: Vite + React + TS project setup)

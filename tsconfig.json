@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 /*{
+=======
+{
+>>>>>>> 17b182c (Initial commit: Vite + React + TS project setup)
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
   ]
+<<<<<<< HEAD
 }*/
 {
   "compilerOptions": {
@@ -26,3 +31,6 @@
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
+=======
+}
+>>>>>>> 17b182c (Initial commit: Vite + React + TS project setup)
