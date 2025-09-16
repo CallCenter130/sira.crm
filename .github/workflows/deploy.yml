@@ -1,0 +1,56 @@
+# Nombre del Workflow para la pestaña "Actions" en GitHub
+name: Deploy Vite App to GitHub Pages
+
+# Define cuándo se ejecutará este workflow
+on:
+  # Se ejecuta cada vez que haces un 'push' a la rama 'main'
+  push:
+    branches: ['main']
+  # Te permite ejecutarlo manualmente desde la pestaña "Actions"
+  workflow_dispatch:
+
+# Configura los permisos que necesitará el workflow
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Define los trabajos (jobs) que se ejecutarán
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Descarga el código del repositorio
+      - name: Checkout repository
+        uses: actions/checkout@v4 # Versión actualizada
+
+      # 2. Configura el entorno de Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4 # Versión actualizada
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      # 3. Instala las dependencias
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Construye la aplicación
+      - name: Build project
+        run: npm run build
+
+      # 5. Prepara los archivos para ser subidos a GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v5 # Versión actualizada
+
+      # 6. Sube los archivos de la carpeta 'dist' como un artefacto de despliegue
+      # ESTA ES LA ACCIÓN MODERNA Y CORRECTA PARA GITHUB PAGES
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3 # Versión actualizada
+        with:
+          path: './dist'
+
+      # 7. Despliega el artefacto a la URL de GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 # Versión actualizada
