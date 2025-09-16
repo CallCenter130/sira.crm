@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-/*{
-=======
 {
->>>>>>> 17b182c (Initial commit: Vite + React + TS project setup)
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
     "target": "ES2023",
@@ -11,22 +7,14 @@
     "skipLibCheck": true,
 
     /* Bundler mode */
-<<<<<<< HEAD
-  /*  "moduleResolution": "bundler",
-=======
     "moduleResolution": "bundler",
->>>>>>> 17b182c (Initial commit: Vite + React + TS project setup)
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
     "noEmit": true,
 
     /* Linting */
-<<<<<<< HEAD
-  /*  "strict": true,
-=======
     "strict": true,
->>>>>>> 17b182c (Initial commit: Vite + React + TS project setup)
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
@@ -34,20 +22,4 @@
     "noUncheckedSideEffectImports": true
   },
   "include": ["vite.config.ts"]
-<<<<<<< HEAD
-}*/
-
-{
-  "compilerOptions": {
-    // --- LÍNEA ELIMINADA ---
-     "composite": true,
-    "skipLibCheck": true,
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "allowSyntheticDefaultImports": true,
-    "strict": true
-  },
-  "include": ["vite.config.ts"]
-=======
->>>>>>> 17b182c (Initial commit: Vite + React + TS project setup)
 }
