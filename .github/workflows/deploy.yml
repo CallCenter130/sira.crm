@@ -1,0 +1,53 @@
+# Nombre del workflow
+name: Build and Deploy to GitHub Pages
+
+on:
+  # Se ejecuta en pushes a la rama main
+  push:
+    branches: ["main"]
+
+  # Permite ejecutarlo manualmente desde la pestaña Actions
+  workflow_dispatch:
+
+# AÑADE ESTA SECCIÓN DE PERMISOS
+permissions:
+  contents: read
+  pages: write      # Permiso para escribir en GitHub Pages
+  id-token: write   # Permiso para autenticarse
+
+jobs:
+  # Job de despliegue
+  deploy:
+    runs-on: ubuntu-latest
+    
+    # AÑADE ESTA SECCIÓN DE ENTORNO
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Usando la versión de Node correcta
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist' # Asegúrate de que esta es tu carpeta de build
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
